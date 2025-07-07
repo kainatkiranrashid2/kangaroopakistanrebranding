@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
 import { useState } from "react";
@@ -11,7 +12,7 @@ const HeroSection = () => {
     {
       id: 1,
       title: "IKMC 2025 Results Announced",
-      subtitle: "Check your competition results now",
+      subtitle: "IKMC 2025 results have been announced.",
       action: "View Results",
       href: "/ikmc-results",
       icon: <Bell className="w-5 h-5" />,
@@ -21,7 +22,7 @@ const HeroSection = () => {
     {
       id: 2,
       title: "IKSC 2025 Registration Open",
-      subtitle: "Early bird pricing available",
+      subtitle: "Register Now for IKSC 2025",
       action: "Register Now",
       href: "/iksc-register",
       icon: <Users className="w-5 h-5" />,
@@ -31,7 +32,8 @@ const HeroSection = () => {
     {
       id: 3,
       title: "Registration Deadline",
-      subtitle: "IKSC 2025 - August 22, 2025",
+      subtitle:
+        "Last date to register for IKSC 2025 is August 22. Registration fees per student:Rs. 1000/-",
       action: "Register",
       href: "/iksc-register",
       icon: <Calendar className="w-5 h-5" />,
@@ -41,17 +43,16 @@ const HeroSection = () => {
     {
       id: 4,
       title: "Intellectual Property Notice",
-      subtitle: "Important legal update regarding trademark protection",
+      subtitle:
+        "The Honourable Intellectual Property Tribunal Lahore has ordered Awais Naeem to refrain from infringing our trademarks/tradenames.",
       action: "View Document",
       href: "/legal-notice",
       icon: <FileText className="w-5 h-5" />,
       priority: "high",
       color: "purple",
-      isLarge: true,
     },
   ];
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const getColorClasses = (color: string, priority: string) => {
     const colors = {
       blue: {
@@ -96,7 +97,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative min-h-screen bg-white overflow-hidden py-10">
+    <section className="relative min-h-screen bg-white overflow-hidden">
       {/* Enhanced Background Pattern */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(0,0,0,0.02)_1px,transparent_0)] [background-size:32px_32px]"></div>
@@ -106,15 +107,16 @@ const HeroSection = () => {
       {/* Main Content */}
       <div className="relative max-w-6xl mx-auto px-6 lg:px-8 pt-24 pb-16">
         {/* Header */}
-        <div className="text-center mb-10">
-          <div className="inline-flex items-center px-5 py-2.5 bg-gradient-to-r from-gray-100 to-gray-50 text-gray-700 rounded-full text-sm font-medium mb-5 transition-all duration-300 hover:from-gray-200 hover:to-gray-100 shadow-sm">
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-gray-100 to-gray-50 text-gray-700 rounded-full text-sm font-medium mb-8 transition-all duration-300 hover:from-gray-200 hover:to-gray-100 shadow-sm">
             <Bell className="w-4 h-4 mr-2" />
             Important Updates
           </div>
 
-          <h1 className="text-2xl md:text-5xl font-bold flex items-center gap-2 justify-center text-gray-900 mb-4 tracking-tight leading-none">
+          <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6 tracking-tight leading-none">
             Stay
-            <span className="block bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent animate-gradient-x">
+            <span className="text-gray-500"> </span>
+            <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent animate-gradient-x">
               Informed
             </span>
           </h1>
@@ -125,8 +127,8 @@ const HeroSection = () => {
           </p>
         </div>
 
-        {/* Announcements Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+        {/* Announcements Grid - All Cards Same Width */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-5xl mx-auto">
           {announcements.map((announcement) => {
             const colorClasses = getColorClasses(
               announcement.color,
@@ -137,51 +139,40 @@ const HeroSection = () => {
               <Link
                 key={announcement.id}
                 href={announcement.href}
-                className={`
-                  group relative overflow-hidden rounded-3xl transition-all duration-700 ease-out
-                  ${announcement.isLarge ? "md:col-span-2" : ""}
-                  hover:scale-[1.03] active:scale-[0.98]
-                  transform-gpu hover:shadow-2xl hover:shadow-black/10
-                `}
+                className="group relative overflow-hidden rounded-2xl transition-all duration-500 ease-out hover:scale-[1.02] active:scale-[0.98] transform-gpu hover:shadow-xl hover:shadow-black/10"
                 onMouseEnter={() => setHoveredCard(announcement.id)}
                 onMouseLeave={() => setHoveredCard(null)}>
                 {/* Card Background with Enhanced Gradients */}
                 <div
                   className={`
                   absolute inset-0 bg-gradient-to-br ${colorClasses.bg} ${colorClasses.hover}
-                  transition-all duration-700 ease-out
+                  transition-all duration-500 ease-out
                   backdrop-blur-sm
                 `}></div>
 
                 {/* Animated Border */}
                 <div
                   className={`
-                  absolute inset-0 rounded-3xl border ${colorClasses.border}
-                  group-hover:border-opacity-100 transition-all duration-500
-                  group-hover:shadow-lg group-hover:shadow-black/5
+                  absolute inset-0 rounded-2xl border ${colorClasses.border}
+                  group-hover:border-opacity-100 transition-all duration-300
                 `}></div>
 
                 {/* Priority Indicator */}
                 {announcement.priority === "urgent" && (
-                  <div className="absolute top-5 right-5 z-10">
-                    <div className="flex items-center space-x-2">
-                      <div className="w-2.5 h-2.5 bg-red-500 rounded-full animate-pulse"></div>
-                      <span className="text-xs font-semibold text-red-600 bg-red-50 px-2 py-1 rounded-full">
-                        URGENT
-                      </span>
-                    </div>
+                  <div className="absolute top-4 right-4">
+                    <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
                   </div>
                 )}
 
                 {/* Card Content */}
-                <div className="relative p-8 lg:p-10">
+                <div className="relative p-8">
                   {/* Icon */}
                   <div className="mb-6">
                     <div
                       className={`
-                      inline-flex items-center justify-center w-14 h-14 rounded-2xl
-                      ${colorClasses.icon} transition-all duration-500
-                      group-hover:scale-110 group-hover:rotate-3 shadow-sm
+                      inline-flex items-center justify-center w-12 h-12 rounded-xl
+                      ${colorClasses.icon} transition-all duration-300
+                      group-hover:scale-110
                     `}>
                       {announcement.icon}
                     </div>
@@ -190,19 +181,14 @@ const HeroSection = () => {
                   {/* Title */}
                   <h3
                     className={`
-                    font-bold mb-4 leading-tight ${colorClasses.text}
-                    ${
-                      announcement.isLarge
-                        ? "text-2xl md:text-3xl"
-                        : "text-xl md:text-2xl"
-                    }
-                    transition-colors duration-300
+                    font-semibold mb-3 leading-tight ${colorClasses.text}
+                    text-xl md:text-2xl
                   `}>
                     {announcement.title}
                   </h3>
 
                   {/* Subtitle */}
-                  <p className="text-gray-700 mb-8 text-base leading-relaxed font-medium">
+                  <p className="text-gray-600 mb-8 text-base leading-relaxed">
                     {announcement.subtitle}
                   </p>
 
@@ -210,17 +196,15 @@ const HeroSection = () => {
                   <div className="flex items-center justify-between">
                     <span
                       className={`
-                      inline-flex items-center text-sm font-semibold ${colorClasses.text}
-                      transition-all duration-300 group-hover:gap-3
+                      inline-flex items-center text-sm font-medium ${colorClasses.text}
+                      transition-all duration-300 group-hover:gap-2
                     `}>
                       {announcement.action}
                       <ChevronRight
                         className={`
-                        w-4 h-4 ml-2 transition-all duration-300
+                        w-4 h-4 ml-1 transition-transform duration-300
                         ${
-                          hoveredCard === announcement.id
-                            ? "translate-x-1 scale-110"
-                            : ""
+                          hoveredCard === announcement.id ? "translate-x-1" : ""
                         }
                       `}
                       />
@@ -229,36 +213,34 @@ const HeroSection = () => {
                     {/* Enhanced Accent Dot */}
                     <div
                       className={`
-                      w-3 h-3 rounded-full ${colorClasses.accent}
-                      transition-all duration-500 shadow-sm
-                      ${
-                        hoveredCard === announcement.id
-                          ? "scale-150 shadow-lg"
-                          : ""
-                      }
+                      w-2 h-2 rounded-full ${colorClasses.accent}
+                      transition-all duration-300
+                      ${hoveredCard === announcement.id ? "scale-150" : ""}
                     `}></div>
                   </div>
                 </div>
 
-                {/* Hover Glow Effect */}
+                {/* Hover Effect */}
                 <div
                   className={`
-                  absolute inset-0 rounded-3xl opacity-0 transition-opacity duration-500
-                  group-hover:opacity-100 shadow-2xl shadow-black/10
+                  absolute inset-0 rounded-2xl shadow-xl shadow-black/5 opacity-0
+                  group-hover:opacity-100 transition-opacity duration-300
                 `}></div>
 
                 {/* Subtle Inner Glow */}
-                <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </Link>
             );
           })}
         </div>
+
+        {/* Bottom Actions */}
       </div>
 
       {/* Enhanced Floating Elements */}
-      <div className="absolute top-1/4 left-8 w-40 h-40 bg-gradient-to-br from-blue-200/20 to-purple-200/20 rounded-full blur-3xl animate-pulse"></div>
-      <div className="absolute bottom-1/3 right-8 w-32 h-32 bg-gradient-to-br from-pink-200/20 to-orange-200/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
-      <div className="absolute top-1/2 left-1/3 w-24 h-24 bg-gradient-to-br from-green-200/15 to-teal-200/15 rounded-full blur-2xl animate-pulse delay-500"></div>
+      <div className="absolute top-1/4 left-4 w-32 h-32 bg-gradient-to-br from-blue-200/20 to-purple-200/20 rounded-full blur-3xl animate-pulse"></div>
+      <div className="absolute bottom-1/4 right-4 w-24 h-24 bg-gradient-to-br from-pink-200/20 to-orange-200/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-40 h-40 bg-gradient-to-br from-green-200/15 to-teal-200/15 rounded-full blur-2xl animate-pulse delay-500"></div>
     </section>
   );
 };
