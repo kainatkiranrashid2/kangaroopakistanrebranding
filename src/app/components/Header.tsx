@@ -55,7 +55,9 @@ const Header = () => {
                       className={`
                         transition-all duration-300 ease-out
                         group-hover:scale-105
-                        ${isScrolled ? "h-10 w-10" : "h-16 w-16"}
+                        ${
+                          isScrolled ? "h-10 w-10" : "h-12 w-12 md:h-16 md:w-16"
+                        }
                       `}
                     />
                   </div>
@@ -105,7 +107,9 @@ const Header = () => {
                       className={`
                         transition-all duration-300 ease-out
                         group-hover:scale-105
-                        ${isScrolled ? "h-10 w-10" : "h-16 w-16"}
+                        ${
+                          isScrolled ? "h-10 w-10" : "h-12 w-12 md:h-16 md:w-16"
+                        }
                       `}
                     />
                   </div>
@@ -130,7 +134,9 @@ const Header = () => {
                       className={`
                         transition-all duration-300 ease-out
                         group-hover:scale-105
-                        ${isScrolled ? "h-8 w-8" : "h-16 w-16"}
+                        ${
+                          isScrolled ? "h-10 w-10" : "h-12 w-12 md:h-16 md:w-16"
+                        }
                       `}
                     />
                   </div>
