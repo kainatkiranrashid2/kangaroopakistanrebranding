@@ -41,10 +41,6 @@ const AboutUsSection = () => {
               {/* Content */}
               <div className="relative h-full flex flex-col justify-center items-center text-center px-8">
                 {/* Badge */}
-                <div className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm text-white/90 rounded-full text-sm font-medium mb-8 transition-all duration-300 group-hover:bg-white/20 border border-white/20">
-                  <Users className="w-4 h-4 mr-2" />
-                  About Our Mission
-                </div>
 
                 {/* Main Title */}
                 <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 tracking-tight leading-none">
