@@ -108,7 +108,7 @@ const HeroSection = () => {
       <div className="relative max-w-6xl mx-auto px-6 lg:px-8 pt-24 pb-16">
         {/* Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-gray-100 to-gray-50 text-gray-700 rounded-full text-sm font-medium mb-8 transition-all duration-300 hover:from-gray-200 hover:to-gray-100 shadow-sm">
+          <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-gray-100 to-gray-50 text-gray-700 rounded-full text-lg font-medium mb-8 transition-all duration-300 hover:from-gray-200 hover:to-gray-100 shadow-sm">
             <Bell className="w-4 h-4 mr-2" />
             Important Updates
           </div>

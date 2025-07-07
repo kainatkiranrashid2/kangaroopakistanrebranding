@@ -36,25 +36,25 @@ const LogosSection = () => {
   const getColorClasses = (color: string) => {
     const colors = {
       blue: {
-        bg: "from-blue-50/50 via-blue-100/30 to-indigo-50/40",
-        border: "border-blue-200/40",
+        bg: "from-[#045FA2]/30 via-[#045FA2]/25 to-[#045FA2]/35",
+        border: "border-[#045FA2]/40",
         hover:
-          "group-hover:from-blue-100/60 group-hover:via-blue-200/40 group-hover:to-indigo-100/50",
-        glow: "group-hover:shadow-blue-500/20",
+          "group-hover:from-[#045FA2]/40 group-hover:via-[#045FA2]/30 group-hover:to-[#045FA2]/45",
+        glow: "group-hover:shadow-[#045FA2]/30",
       },
       green: {
-        bg: "from-emerald-50/50 via-green-100/30 to-teal-50/40",
-        border: "border-emerald-200/40",
+        bg: "from-[#E97A25]/30 via-[#E97A25]/25 to-[#E97A25]/35",
+        border: "border-[#E97A25]/40",
         hover:
-          "group-hover:from-emerald-100/60 group-hover:via-green-200/40 group-hover:to-teal-100/50",
-        glow: "group-hover:shadow-emerald-500/20",
+          "group-hover:from-[#E97A25]/40 group-hover:via-[#E97A25]/30 group-hover:to-[#E97A25]/45",
+        glow: "group-hover:shadow-[#E97A25]/30",
       },
       purple: {
-        bg: "from-purple-50/50 via-violet-100/30 to-fuchsia-50/40",
-        border: "border-purple-200/40",
+        bg: "from-[#019241]/30 via-[#019241]/25 to-[#019241]/35",
+        border: "border-[#019241]/40",
         hover:
-          "group-hover:from-purple-100/60 group-hover:via-violet-200/40 group-hover:to-fuchsia-100/50",
-        glow: "group-hover:shadow-purple-500/20",
+          "group-hover:from-[#019241]/40 group-hover:via-[#019241]/30 group-hover:to-[#019241]/45",
+        glow: "group-hover:shadow-[#019241]/30",
       },
     };
 
@@ -90,7 +90,7 @@ const LogosSection = () => {
           </p>
         </div>
 
-        {/* Logos Grid */}
+        {/* Logos Grid - Fixed Height */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {logos.map((logo, index) => {
             const colorClasses = getColorClasses(logo.color);
@@ -98,14 +98,14 @@ const LogosSection = () => {
             return (
               <div
                 key={logo.id}
-                className="group relative"
+                className="group relative h-full"
                 onMouseEnter={() => setHoveredLogo(logo.id)}
                 onMouseLeave={() => setHoveredLogo(null)}
                 style={{
                   animationDelay: `${index * 150}ms`,
                 }}>
-                {/* Card Container */}
-                <div className="relative overflow-hidden rounded-3xl transition-all duration-700 ease-out hover:scale-[1.02] active:scale-[0.98] transform-gpu">
+                {/* Card Container - Fixed Height */}
+                <div className="relative overflow-hidden rounded-3xl transition-all duration-700 ease-out hover:scale-[1.02] active:scale-[0.98] transform-gpu h-[400px] flex flex-col">
                   {/* Background with Gradient */}
                   <div
                     className={`
@@ -121,10 +121,10 @@ const LogosSection = () => {
                     group-hover:border-opacity-60 transition-all duration-300
                   `}></div>
 
-                  {/* Card Content */}
-                  <div className="relative py-8 px-6 text-center">
-                    {/* Logo Container */}
-                    <div className="mb-8 flex justify-center">
+                  {/* Card Content - Flex Layout */}
+                  <div className="relative flex flex-col justify-between h-full py-8 px-6 text-center">
+                    {/* Top Section - Logo */}
+                    <div className="flex justify-center items-center flex-1">
                       <div className="relative">
                         {/* Logo Background Glow */}
                         <div
@@ -161,19 +161,19 @@ const LogosSection = () => {
                       </div>
                     </div>
 
-                    {/* Text Content */}
-                    <div className="space-y-2">
+                    {/* Middle Section - Text Content */}
+                    <div className="space-y-3 flex-shrink-0">
                       <h3 className="text-2xl md:text-3xl font-bold text-gray-900 tracking-tight">
                         {logo.name}
                       </h3>
 
-                      <p className="text-gray-600 text-base leading-relaxed font-light max-w-xs mx-auto">
+                      <p className="text-gray-600 text-base leading-relaxed font-light max-w-xs mx-auto min-h-[3rem] flex items-center justify-center">
                         {logo.description}
                       </p>
                     </div>
 
-                    {/* Learn More Button */}
-                    <div className="mt-8">
+                    {/* Bottom Section - Learn More Button */}
+                    <div className="mt-6 flex-shrink-0">
                       <a
                         href={logo.href}
                         className={`
