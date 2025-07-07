@@ -51,6 +51,7 @@ const HeroSection = () => {
     },
   ];
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const getColorClasses = (color: string, priority: string) => {
     const colors = {
       blue: {
