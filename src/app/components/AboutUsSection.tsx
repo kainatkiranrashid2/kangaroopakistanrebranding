@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Users, Award, Globe, ChevronRight } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 
 const AboutUsSection = () => {
   const [isHovered, setIsHovered] = useState(false);
