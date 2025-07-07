@@ -38,19 +38,22 @@ const LogosSection = () => {
       blue: {
         bg: "from-blue-50/50 via-blue-100/30 to-indigo-50/40",
         border: "border-blue-200/40",
-        hover: "group-hover:from-blue-100/60 group-hover:via-blue-200/40 group-hover:to-indigo-100/50",
+        hover:
+          "group-hover:from-blue-100/60 group-hover:via-blue-200/40 group-hover:to-indigo-100/50",
         glow: "group-hover:shadow-blue-500/20",
       },
       green: {
         bg: "from-emerald-50/50 via-green-100/30 to-teal-50/40",
         border: "border-emerald-200/40",
-        hover: "group-hover:from-emerald-100/60 group-hover:via-green-200/40 group-hover:to-teal-100/50",
+        hover:
+          "group-hover:from-emerald-100/60 group-hover:via-green-200/40 group-hover:to-teal-100/50",
         glow: "group-hover:shadow-emerald-500/20",
       },
       purple: {
         bg: "from-purple-50/50 via-violet-100/30 to-fuchsia-50/40",
         border: "border-purple-200/40",
-        hover: "group-hover:from-purple-100/60 group-hover:via-violet-200/40 group-hover:to-fuchsia-100/50",
+        hover:
+          "group-hover:from-purple-100/60 group-hover:via-violet-200/40 group-hover:to-fuchsia-100/50",
         glow: "group-hover:shadow-purple-500/20",
       },
     };
@@ -59,17 +62,17 @@ const LogosSection = () => {
   };
 
   return (
-    <section className="relative py-24 bg-white overflow-hidden">
+    <section className="relative pb-10 bg-white overflow-hidden">
       {/* Subtle Background Pattern */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(0,0,0,0.015)_1px,transparent_0)] [background-size:24px_24px]"></div>
         <div className="absolute inset-0 bg-gradient-to-b from-gray-50/30 via-transparent to-gray-50/20"></div>
       </div>
 
-      <div className="relative max-w-6xl mx-auto px-6 lg:px-8">
+      <div className="relative mx-auto px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-20">
-          <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-gray-100/80 to-gray-50/60 text-gray-700 rounded-full text-sm font-medium mb-8 transition-all duration-300 hover:from-gray-200/80 hover:to-gray-100/60 shadow-sm backdrop-blur-sm">
+        <div className="text-center mb-10">
+          <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-gray-100/80 to-gray-50/60 text-gray-700 rounded-full text-lg font-medium mb-8 transition-all duration-300 hover:from-gray-200/80 hover:to-gray-100/60 shadow-sm backdrop-blur-sm">
             Our Competitions
           </div>
 
@@ -82,15 +85,16 @@ const LogosSection = () => {
           </h2>
 
           <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed font-light">
-            Discover our internationally recognized competitions designed to challenge and inspire students worldwide.
+            Discover our internationally recognized competitions designed to
+            challenge and inspire students worldwide.
           </p>
         </div>
 
         {/* Logos Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {logos.map((logo, index) => {
             const colorClasses = getColorClasses(logo.color);
-            
+
             return (
               <div
                 key={logo.id}
@@ -100,37 +104,41 @@ const LogosSection = () => {
                 style={{
                   animationDelay: `${index * 150}ms`,
                 }}>
-                
                 {/* Card Container */}
                 <div className="relative overflow-hidden rounded-3xl transition-all duration-700 ease-out hover:scale-[1.02] active:scale-[0.98] transform-gpu">
-                  
                   {/* Background with Gradient */}
-                  <div className={`
+                  <div
+                    className={`
                     absolute inset-0 bg-gradient-to-br ${colorClasses.bg} ${colorClasses.hover}
                     transition-all duration-500 ease-out
                     backdrop-blur-sm
                   `}></div>
 
                   {/* Animated Border */}
-                  <div className={`
+                  <div
+                    className={`
                     absolute inset-0 rounded-3xl border ${colorClasses.border}
                     group-hover:border-opacity-60 transition-all duration-300
                   `}></div>
 
                   {/* Card Content */}
-                  <div className="relative p-12 text-center">
-                    
+                  <div className="relative py-8 px-6 text-center">
                     {/* Logo Container */}
                     <div className="mb-8 flex justify-center">
                       <div className="relative">
                         {/* Logo Background Glow */}
-                        <div className={`
+                        <div
+                          className={`
                           absolute inset-0 rounded-2xl bg-white/60 backdrop-blur-sm
                           transition-all duration-500 ease-out
-                          ${hoveredLogo === logo.id ? 'scale-110 opacity-100' : 'scale-100 opacity-80'}
+                          ${
+                            hoveredLogo === logo.id
+                              ? "scale-110 opacity-100"
+                              : "scale-100 opacity-80"
+                          }
                           shadow-lg ${colorClasses.glow}
                         `}></div>
-                        
+
                         {/* Logo Image */}
                         <div className="relative p-6">
                           <Image
@@ -141,7 +149,11 @@ const LogosSection = () => {
                             className={`
                               w-24 h-24 md:w-28 md:h-28 object-contain
                               transition-all duration-500 ease-out
-                              ${hoveredLogo === logo.id ? 'scale-110' : 'scale-100'}
+                              ${
+                                hoveredLogo === logo.id
+                                  ? "scale-110"
+                                  : "scale-100"
+                              }
                               filter drop-shadow-sm
                             `}
                           />
@@ -150,11 +162,11 @@ const LogosSection = () => {
                     </div>
 
                     {/* Text Content */}
-                    <div className="space-y-4">
+                    <div className="space-y-2">
                       <h3 className="text-2xl md:text-3xl font-bold text-gray-900 tracking-tight">
                         {logo.name}
                       </h3>
-                      
+
                       <p className="text-gray-600 text-base leading-relaxed font-light max-w-xs mx-auto">
                         {logo.description}
                       </p>
@@ -172,26 +184,35 @@ const LogosSection = () => {
                           transition-all duration-300 ease-out
                           hover:scale-105 active:scale-95
                           shadow-sm hover:shadow-md
-                          ${hoveredLogo === logo.id ? 'translate-y-0' : 'translate-y-1'}
+                          ${
+                            hoveredLogo === logo.id
+                              ? "translate-y-0"
+                              : "translate-y-1"
+                          }
                         `}>
                         Learn More
-                        <svg 
+                        <svg
                           className={`
                             ml-2 w-4 h-4 transition-transform duration-300
-                            ${hoveredLogo === logo.id ? 'translate-x-1' : ''}
+                            ${hoveredLogo === logo.id ? "translate-x-1" : ""}
                           `}
-                          fill="none" 
-                          stroke="currentColor" 
-                          viewBox="0 0 24 24"
-                        >
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24">
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M9 5l7 7-7 7"
+                          />
                         </svg>
                       </a>
                     </div>
                   </div>
 
                   {/* Hover Glow Effect */}
-                  <div className={`
+                  <div
+                    className={`
                     absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100
                     transition-opacity duration-500 ease-out
                     shadow-2xl ${colorClasses.glow}
@@ -209,7 +230,9 @@ const LogosSection = () => {
         <div className="mt-20 text-center">
           <div className="inline-flex items-center space-x-2 text-gray-400">
             <div className="w-12 h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent"></div>
-            <span className="text-sm font-light">Empowering minds globally</span>
+            <span className="text-sm font-light">
+              Empowering minds globally
+            </span>
             <div className="w-12 h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent"></div>
           </div>
         </div>
