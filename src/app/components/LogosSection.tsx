@@ -43,11 +43,11 @@ const LogosSection = () => {
         glow: "group-hover:shadow-[#045FA2]/30",
       },
       green: {
-        bg: "from-[#E97A25]/30 via-[#E97A25]/25 to-[#E97A25]/35",
-        border: "border-[#E97A25]/40",
+        bg: "from-[#E97A25]/40 via-[#E97A25]/35 to-[#E97A25]/45",
+        border: "border-[#E97A25]/50",
         hover:
-          "group-hover:from-[#E97A25]/40 group-hover:via-[#E97A25]/30 group-hover:to-[#E97A25]/45",
-        glow: "group-hover:shadow-[#E97A25]/30",
+          "group-hover:from-[#E97A25]/50 group-hover:via-[#E97A25]/40 group-hover:to-[#E97A25]/55",
+        glow: "group-hover:shadow-[#E97A25]/35",
       },
       purple: {
         bg: "from-[#019241]/30 via-[#019241]/25 to-[#019241]/35",
