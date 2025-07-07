@@ -26,12 +26,11 @@ const AboutUsSection = () => {
             {/* Background Image with Overlay */}
             <div className="relative h-[500px] md:h-[600px]">
               {/* Background Image */}
-              <div 
+              <div
                 className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-700 ease-out group-hover:scale-105"
                 style={{
-                  backgroundImage: `url('https://images.pexels.com/photos/8471831/pexels-photo-8471831.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')`
-                }}
-              ></div>
+                  backgroundImage: `url('https://images.pexels.com/photos/8471831/pexels-photo-8471831.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')`,
+                }}></div>
 
               {/* Gradient Overlay */}
               <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/40 to-black/60 transition-all duration-500 group-hover:from-black/50 group-hover:via-black/30 group-hover:to-black/50"></div>
@@ -49,52 +48,20 @@ const AboutUsSection = () => {
 
                 {/* Main Title */}
                 <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 tracking-tight leading-none">
-                  World's Most
+                  World&apos;s Most
                   <span className="block bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
                     Prestigious
                   </span>
                   <span className="block">Educational Contests</span>
                 </h2>
 
-                {/* Subtitle */}
-                <p className="text-xl md:text-2xl text-white/80 max-w-3xl mx-auto leading-relaxed font-light mb-12">
-                  Discover our journey of excellence in nurturing young minds through internationally recognized competitions that challenge and inspire students worldwide.
-                </p>
-
-                {/* Stats Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 max-w-2xl mx-auto">
-                  <div className="text-center">
-                    <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-white/10 backdrop-blur-sm text-white mb-3 transition-all duration-300 group-hover:bg-white/20 group-hover:scale-110">
-                      <Globe className="w-6 h-6" />
-                    </div>
-                    <div className="text-2xl font-bold text-white">50+</div>
-                    <div className="text-sm text-white/70">Countries</div>
-                  </div>
-                  
-                  <div className="text-center">
-                    <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-white/10 backdrop-blur-sm text-white mb-3 transition-all duration-300 group-hover:bg-white/20 group-hover:scale-110">
-                      <Users className="w-6 h-6" />
-                    </div>
-                    <div className="text-2xl font-bold text-white">1M+</div>
-                    <div className="text-sm text-white/70">Students</div>
-                  </div>
-                  
-                  <div className="text-center">
-                    <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-white/10 backdrop-blur-sm text-white mb-3 transition-all duration-300 group-hover:bg-white/20 group-hover:scale-110">
-                      <Award className="w-6 h-6" />
-                    </div>
-                    <div className="text-2xl font-bold text-white">25+</div>
-                    <div className="text-sm text-white/70">Years</div>
-                  </div>
-                </div>
-
                 {/* CTA Button */}
                 <div className="inline-flex items-center px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white rounded-full font-medium transition-all duration-300 border border-white/20 hover:border-white/30 group-hover:scale-105">
                   <span className="mr-3">Learn About Our Story</span>
-                  <ChevronRight 
+                  <ChevronRight
                     className={`w-5 h-5 transition-transform duration-300 ${
                       isHovered ? "translate-x-1" : ""
-                    }`} 
+                    }`}
                   />
                 </div>
               </div>
