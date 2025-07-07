@@ -225,17 +225,6 @@ const LogosSection = () => {
             );
           })}
         </div>
-
-        {/* Bottom Accent */}
-        <div className="mt-20 text-center">
-          <div className="inline-flex items-center space-x-2 text-gray-400">
-            <div className="w-12 h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent"></div>
-            <span className="text-sm font-light">
-              Empowering minds globally
-            </span>
-            <div className="w-12 h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent"></div>
-          </div>
-        </div>
       </div>
 
       {/* Floating Background Elements */}

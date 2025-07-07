@@ -8,14 +8,14 @@ const AboutUsSection = () => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <section className="relative py-20 bg-white overflow-hidden">
+    <section className="relative py-10 bg-white overflow-hidden">
       {/* Enhanced Background Pattern */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(0,0,0,0.02)_1px,transparent_0)] [background-size:32px_32px]"></div>
         <div className="absolute inset-0 bg-gradient-to-br from-indigo-50/40 via-transparent to-purple-50/30"></div>
       </div>
 
-      <div className="relative max-w-6xl mx-auto px-6 lg:px-8">
+      <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
         {/* Main Content Card */}
         <Link
           href="/about"
@@ -72,15 +72,6 @@ const AboutUsSection = () => {
         </Link>
 
         {/* Bottom Accent */}
-        <div className="mt-16 text-center">
-          <div className="inline-flex items-center space-x-2 text-gray-400">
-            <div className="w-12 h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent"></div>
-            <span className="text-sm font-light">
-              Excellence in Education Since 1999
-            </span>
-            <div className="w-12 h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent"></div>
-          </div>
-        </div>
       </div>
 
       {/* Floating Background Elements */}
