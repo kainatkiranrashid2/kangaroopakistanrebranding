@@ -1,21 +1,59 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   const navigationItems = [
     { name: "Home", href: "/" },
     { name: "About Us", href: "/about" },
     { name: "Portfolio", href: "/portfolio" },
-    { name: "IKMC", href: "/ikmc" },
-    { name: "IKSC", href: "/iksc" },
-    { name: "IKLC", href: "/iklc" },
+  ];
+
+  const competitionItems = [
+    {
+      name: "IKMC",
+      href: "/ikmc",
+      dropdownItems: [
+        { name: "About", href: "/ikmc/about" },
+        { name: "Past Papers", href: "/ikmc/past-papers" },
+        { name: "Results", href: "/ikmc/results" },
+        { name: "General Information", href: "/ikmc/general-information" },
+        { name: "Forms", href: "/ikmc/forms" },
+        { name: "Answer Sheets", href: "/ikmc/answer-sheets" },
+      ],
+    },
+    {
+      name: "IKSC",
+      href: "/iksc",
+      dropdownItems: [
+        { name: "About", href: "/iksc/about" },
+        { name: "Past Papers", href: "/iksc/past-papers" },
+        { name: "Results", href: "/iksc/results" },
+        { name: "General Information", href: "/iksc/general-information" },
+        { name: "Forms", href: "/iksc/forms" },
+        { name: "Answer Sheets", href: "/iksc/answer-sheets" },
+      ],
+    },
+    {
+      name: "IKLC",
+      href: "/iklc",
+      dropdownItems: [
+        { name: "About", href: "/iklc/about" },
+        { name: "Past Papers", href: "/iklc/past-papers" },
+        { name: "Results", href: "/iklc/results" },
+        { name: "General Information", href: "/iklc/general-information" },
+        { name: "Forms", href: "/iklc/forms" },
+        { name: "Answer Sheets", href: "/iklc/answer-sheets" },
+      ],
+    },
   ];
 
   // Stripe-style scroll detection
@@ -27,6 +65,34 @@ const Header = () => {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setActiveDropdown(null);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  // Close dropdown on escape key
+  useEffect(() => {
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setActiveDropdown(null);
+      }
+    };
+
+    document.addEventListener("keydown", handleEscape);
+    return () => document.removeEventListener("keydown", handleEscape);
+  }, []);
+
+  const handleDropdownToggle = (itemName: string) => {
+    setActiveDropdown(activeDropdown === itemName ? null : itemName);
+  };
 
   return (
     <>
@@ -65,7 +131,8 @@ const Header = () => {
               </div>
 
               {/* Center Navigation - Desktop */}
-              <nav className="hidden lg:flex items-center space-x-8">
+              <nav className="hidden lg:flex items-center space-x-8" ref={dropdownRef}>
+                {/* Regular Navigation Items */}
                 {navigationItems.map((item) => (
                   <Link
                     key={item.name}
@@ -75,6 +142,48 @@ const Header = () => {
                     {/* Stripe's signature underline effect */}
                     <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gray-900 transition-all duration-200 group-hover:w-full"></div>
                   </Link>
+                ))}
+
+                {/* Competition Items with Dropdowns */}
+                {competitionItems.map((item) => (
+                  <div key={item.name} className="relative">
+                    <button
+                      onClick={() => handleDropdownToggle(item.name)}
+                      className="relative text-gray-600 hover:text-gray-900 font-normal text-sm transition-colors duration-200 group flex items-center">
+                      <span className="relative z-10">{item.name}</span>
+                      <ChevronDown 
+                        className={`ml-1 w-3 h-3 transition-transform duration-200 ${
+                          activeDropdown === item.name ? "rotate-180" : ""
+                        }`} 
+                      />
+                      {/* Stripe's signature underline effect */}
+                      <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gray-900 transition-all duration-200 group-hover:w-full"></div>
+                    </button>
+
+                    {/* Stripe-style Dropdown */}
+                    <div
+                      className={`
+                        absolute top-full left-0 mt-2 w-56 bg-white rounded-lg shadow-lg border border-gray-200/60
+                        transition-all duration-200 ease-out origin-top
+                        ${
+                          activeDropdown === item.name
+                            ? "opacity-100 scale-100 translate-y-0"
+                            : "opacity-0 scale-95 -translate-y-2 pointer-events-none"
+                        }
+                      `}>
+                      <div className="py-2">
+                        {item.dropdownItems.map((dropdownItem, index) => (
+                          <Link
+                            key={dropdownItem.name}
+                            href={dropdownItem.href}
+                            className="block px-4 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition-colors duration-150"
+                            onClick={() => setActiveDropdown(null)}>
+                            {dropdownItem.name}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
                 ))}
 
                 {/* Stripe-style CTA Button */}
@@ -149,6 +258,7 @@ const Header = () => {
           ${isMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"}
         `}>
           <div className="px-6 py-4 space-y-1">
+            {/* Regular Navigation Items */}
             {navigationItems.map((item) => (
               <Link
                 key={item.name}
@@ -157,6 +267,24 @@ const Header = () => {
                 onClick={() => setIsMenuOpen(false)}>
                 {item.name}
               </Link>
+            ))}
+
+            {/* Competition Items - Mobile */}
+            {competitionItems.map((item) => (
+              <div key={item.name} className="space-y-1">
+                <div className="px-3 py-2 text-gray-900 font-medium text-sm border-t border-gray-100 mt-2 pt-3">
+                  {item.name}
+                </div>
+                {item.dropdownItems.map((dropdownItem) => (
+                  <Link
+                    key={dropdownItem.name}
+                    href={dropdownItem.href}
+                    className="block px-6 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors duration-200 text-sm"
+                    onClick={() => setIsMenuOpen(false)}>
+                    {dropdownItem.name}
+                  </Link>
+                ))}
+              </div>
             ))}
 
             {/* Mobile CTA */}
