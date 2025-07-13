@@ -103,7 +103,7 @@ const Header = () => {
         {/* Stripe-style Navigation */}
         <div
           className={`
-          bg-white/95 backdrop-blur-sm
+          bg-gradient-to-r from-white/95 via-gray-50/95 to-white/95 backdrop-blur-sm
           transition-all duration-200 ease-out
           ${
             isScrolled
