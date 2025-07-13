@@ -189,7 +189,7 @@ const Header = () => {
                           <h3 className="text-sm font-semibold text-gray-900 tracking-wide">
                             {item.name}
                           </h3>
-                          <div className="w-8 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mt-1"></div>
+                          <div className="w-8 h-0.5 bg-gradient-to-r from-green-500 via-blue-500 to-orange-500 rounded-full mt-1"></div>
                         </div>
                         
                         {/* Menu Items */}
@@ -197,7 +197,7 @@ const Header = () => {
                           <Link
                             key={dropdownItem.name}
                             href={dropdownItem.href}
-                            className="group relative block mx-2 px-4 py-3 text-sm text-gray-600 hover:text-gray-900 rounded-xl transition-all duration-200 hover:bg-gradient-to-r hover:from-gray-50/80 hover:to-blue-50/40 hover:shadow-sm"
+                            className="group relative block mx-2 px-4 py-3 text-sm text-gray-600 hover:text-gray-900 rounded-xl transition-all duration-200 hover:bg-gradient-to-r hover:from-green-50/40 hover:via-blue-50/40 hover:to-orange-50/40 hover:shadow-sm"
                             onClick={() => setActiveDropdown(null)}>
                             <div className="flex items-center justify-between">
                               <span className="font-medium">{dropdownItem.name}</span>
@@ -212,13 +212,13 @@ const Header = () => {
                             </div>
                             
                             {/* Hover Effect Line */}
-                            <div className="absolute bottom-0 left-4 right-4 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left"></div>
+                            <div className="absolute bottom-0 left-4 right-4 h-0.5 bg-gradient-to-r from-green-500 via-blue-500 to-orange-500 rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left"></div>
                           </Link>
                         ))}
                       </div>
                       
                       {/* Bottom Glow Effect */}
-                      <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full blur-sm"></div>
+                      <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-gradient-to-r from-green-500/20 via-blue-500/20 to-orange-500/20 rounded-full blur-sm"></div>
                     </div>
                   </div>
                 ))}
