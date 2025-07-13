@@ -168,25 +168,57 @@ const Header = () => {
                     {/* Stripe-style Dropdown */}
                     <div
                       className={`
-                        absolute top-full left-0 mt-2 w-56 bg-white rounded-lg shadow-lg border border-gray-200/60
-                        transition-all duration-200 ease-out origin-top
+                        absolute top-full left-0 mt-3 w-64 bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-gray-200/40
+                        transition-all duration-300 ease-out origin-top
                         ${
                           activeDropdown === item.name
-                            ? "opacity-100 scale-100 translate-y-0"
-                            : "opacity-0 scale-95 -translate-y-2 pointer-events-none"
+                            ? "opacity-100 scale-100 translate-y-0 visible"
+                            : "opacity-0 scale-95 -translate-y-3 invisible pointer-events-none"
                         }
                       `}>
-                      <div className="py-2">
+                      {/* Gradient Background Overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-white/80 via-white/60 to-gray-50/80 rounded-2xl"></div>
+                      
+                      {/* Subtle Inner Border */}
+                      <div className="absolute inset-0 rounded-2xl border border-white/60"></div>
+                      
+                      {/* Content */}
+                      <div className="relative py-3 px-1">
+                        {/* Header with Competition Name */}
+                        <div className="px-4 py-2 mb-2">
+                          <h3 className="text-sm font-semibold text-gray-900 tracking-wide">
+                            {item.name}
+                          </h3>
+                          <div className="w-8 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mt-1"></div>
+                        </div>
+                        
+                        {/* Menu Items */}
                         {item.dropdownItems.map((dropdownItem) => (
                           <Link
                             key={dropdownItem.name}
                             href={dropdownItem.href}
-                            className="block px-4 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition-colors duration-150"
+                            className="group relative block mx-2 px-4 py-3 text-sm text-gray-600 hover:text-gray-900 rounded-xl transition-all duration-200 hover:bg-gradient-to-r hover:from-gray-50/80 hover:to-blue-50/40 hover:shadow-sm"
                             onClick={() => setActiveDropdown(null)}>
-                            {dropdownItem.name}
+                            <div className="flex items-center justify-between">
+                              <span className="font-medium">{dropdownItem.name}</span>
+                              <svg 
+                                className="w-4 h-4 opacity-0 group-hover:opacity-100 transform translate-x-0 group-hover:translate-x-1 transition-all duration-200" 
+                                fill="none" 
+                                stroke="currentColor" 
+                                viewBox="0 0 24 24"
+                              >
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                              </svg>
+                            </div>
+                            
+                            {/* Hover Effect Line */}
+                            <div className="absolute bottom-0 left-4 right-4 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left"></div>
                           </Link>
                         ))}
                       </div>
+                      
+                      {/* Bottom Glow Effect */}
+                      <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full blur-sm"></div>
                     </div>
                   </div>
                 ))}
