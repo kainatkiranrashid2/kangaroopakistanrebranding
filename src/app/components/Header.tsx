@@ -177,7 +177,7 @@ const Header = () => {
                         }
                       `}>
                       <div className="py-2">
-                        {item.dropdownItems.map((dropdownItem, index) => (
+                        {item.dropdownItems.map((dropdownItem) => (
                           <Link
                             key={dropdownItem.name}
                             href={dropdownItem.href}
