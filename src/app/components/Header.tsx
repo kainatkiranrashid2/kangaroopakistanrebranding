@@ -103,12 +103,11 @@ const Header = () => {
       <header className="fixed top-0 left-0 right-0 z-50">
         {/* Stripe-style Navigation */}
         <div
-          className={`
-          bg-gradient-to-r from-white/96 via-blue-50/30 to-white/96 backdrop-blur-sm
-          transition-all duration-200 ease-out
+          className={`bg-white backdrop-blur-sm
+          
           ${
             isScrolled
-              ? "border-b border-gray-200/60 shadow-sm bg-gradient-to-r from-white/98 via-blue-50/40 to-white/98"
+              ? "border-b border-gray-200/60 shadow-sm bg-white backdrop-blur-sm"
               : "border-b border-transparent"
           }
         `}>
@@ -293,11 +292,13 @@ const Header = () => {
                   <span>{item.name}</span>
                   <ChevronDown
                     className={`w-4 h-4 transition-transform duration-200 ${
-                      activeDropdown === `mobile-${item.name}` ? "rotate-180" : ""
+                      activeDropdown === `mobile-${item.name}`
+                        ? "rotate-180"
+                        : ""
                     }`}
                   />
                 </button>
-                
+
                 {/* Mobile Submenu */}
                 <div
                   className={`
@@ -309,18 +310,18 @@ const Header = () => {
                     }
                   `}>
                   <div className="space-y-1 pl-3">
-                {item.dropdownItems.map((dropdownItem) => (
-                  <Link
-                    key={dropdownItem.name}
-                    href={dropdownItem.href}
+                    {item.dropdownItems.map((dropdownItem) => (
+                      <Link
+                        key={dropdownItem.name}
+                        href={dropdownItem.href}
                         className="block px-4 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors duration-200 text-sm"
                         onClick={() => {
                           setIsMenuOpen(false);
                           setActiveDropdown(null);
                         }}>
-                    {dropdownItem.name}
-                  </Link>
-                ))}
+                        {dropdownItem.name}
+                      </Link>
+                    ))}
                   </div>
                 </div>
               </div>
