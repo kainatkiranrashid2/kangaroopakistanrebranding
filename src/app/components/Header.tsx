@@ -270,9 +270,9 @@ const Header = () => {
           className={`
           lg:hidden bg-white border-b border-gray-200
           transition-all duration-200 ease-out overflow-hidden
-          ${isMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"}
+          ${isMenuOpen ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0"}
         `}>
-          <div className="px-6 py-4 space-y-1">
+          <div className="px-6 py-4 space-y-1 max-h-[500px] overflow-y-auto">
             {/* Regular Navigation Items */}
             {navigationItems.map((item) => (
               <Link
@@ -287,18 +287,42 @@ const Header = () => {
             {/* Competition Items - Mobile */}
             {competitionItems.map((item) => (
               <div key={item.name} className="space-y-1">
-                <div className="px-3 py-2 text-gray-900 font-medium text-sm border-t border-gray-100 mt-2 pt-3">
-                  {item.name}
-                </div>
+                <button
+                  onClick={() => handleDropdownToggle(`mobile-${item.name}`)}
+                  className="w-full flex items-center justify-between px-3 py-2 text-gray-900 font-medium text-sm border-t border-gray-100 mt-2 pt-3 hover:bg-gray-50 rounded-md transition-colors duration-200">
+                  <span>{item.name}</span>
+                  <ChevronDown
+                    className={`w-4 h-4 transition-transform duration-200 ${
+                      activeDropdown === `mobile-${item.name}` ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+                
+                {/* Mobile Submenu */}
+                <div
+                  className={`
+                    overflow-hidden transition-all duration-200 ease-out
+                    ${
+                      activeDropdown === `mobile-${item.name}`
+                        ? "max-h-64 opacity-100"
+                        : "max-h-0 opacity-0"
+                    }
+                  `}>
+                  <div className="space-y-1 pl-3">
                 {item.dropdownItems.map((dropdownItem) => (
                   <Link
                     key={dropdownItem.name}
                     href={dropdownItem.href}
-                    className="block px-6 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors duration-200 text-sm"
-                    onClick={() => setIsMenuOpen(false)}>
+                        className="block px-4 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-md transition-colors duration-200 text-sm"
+                        onClick={() => {
+                          setIsMenuOpen(false);
+                          setActiveDropdown(null);
+                        }}>
                     {dropdownItem.name}
                   </Link>
                 ))}
+                  </div>
+                </div>
               </div>
             ))}
 
@@ -307,14 +331,14 @@ const Header = () => {
               <Link
                 href="https://enrollments.kangaroopakistan.org/"
                 target="blank"
-                className="px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium   rounded-md transition-colors duration-200 shadow-sm hover:shadow-md"
+                className="block text-center px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-md transition-colors duration-200 shadow-sm hover:shadow-md"
                 onClick={() => setIsMenuOpen(false)}>
                 Login
               </Link>
               <Link
                 href="https://enrollments.kangaroopakistan.org/register"
                 target="blank"
-                className="px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium   rounded-md transition-colors duration-200 shadow-sm hover:shadow-md"
+                className="block text-center px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-md transition-colors duration-200 shadow-sm hover:shadow-md"
                 onClick={() => setIsMenuOpen(false)}>
                 Register Now
               </Link>
