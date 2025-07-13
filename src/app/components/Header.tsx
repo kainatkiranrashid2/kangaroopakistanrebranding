@@ -15,6 +15,7 @@ const Header = () => {
     { name: "Home", href: "/" },
     { name: "About Us", href: "/about" },
     { name: "Portfolio", href: "/portfolio" },
+    { name: "Contact Us", href: "/contact" },
   ];
 
   const competitionItems = [
@@ -191,12 +192,19 @@ const Header = () => {
                   </div>
                 ))}
 
-                {/* Stripe-style CTA Button */}
-                <Link
-                  href="/contact"
-                  className="ml-4 px-4 py-2 bg-gray-900 hover:bg-gray-800 text-white text-sm font-medium rounded-md transition-colors duration-200">
-                  Contact Us
-                </Link>
+                {/* Auth Buttons */}
+                <div className="flex items-center space-x-3 ml-6">
+                  <Link
+                    href="/login"
+                    className="px-4 py-2 text-gray-600 hover:text-gray-900 text-sm font-medium transition-colors duration-200">
+                    Login
+                  </Link>
+                  <Link
+                    href="/register"
+                    className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-md transition-colors duration-200 shadow-sm hover:shadow-md">
+                    Register Now
+                  </Link>
+                </div>
               </nav>
 
               {/* Right Logo - Inventive Learning (Desktop) */}
@@ -292,13 +300,19 @@ const Header = () => {
               </div>
             ))}
 
-            {/* Mobile CTA */}
-            <div className="pt-4 border-t border-gray-100">
+            {/* Mobile Auth Buttons */}
+            <div className="pt-4 border-t border-gray-100 space-y-2">
               <Link
-                href="/contact"
-                className="block px-3 py-2 bg-gray-900 hover:bg-gray-800 text-white text-center rounded-md transition-colors duration-200 font-medium text-sm"
+                href="/login"
+                className="block px-3 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-50 text-center rounded-md transition-colors duration-200 font-medium text-sm border border-gray-200"
                 onClick={() => setIsMenuOpen(false)}>
-                Contact Us
+                Login
+              </Link>
+              <Link
+                href="/register"
+                className="block px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white text-center rounded-md transition-colors duration-200 font-medium text-sm shadow-sm"
+                onClick={() => setIsMenuOpen(false)}>
+                Register Now
               </Link>
             </div>
           </div>
