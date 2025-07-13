@@ -305,14 +305,16 @@ const Header = () => {
             {/* Mobile Auth Buttons */}
             <div className="pt-4 border-t border-gray-100 space-y-2">
               <Link
-                href="/login"
-                className="block px-3 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-50 text-center rounded-md transition-colors duration-200 font-medium text-sm border border-gray-200"
+                href="https://enrollments.kangaroopakistan.org/"
+                target="blank"
+                className="px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium   rounded-md transition-colors duration-200 shadow-sm hover:shadow-md"
                 onClick={() => setIsMenuOpen(false)}>
                 Login
               </Link>
               <Link
-                href="/register"
-                className="block px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white text-center rounded-md transition-colors duration-200 font-medium text-sm shadow-sm"
+                href="https://enrollments.kangaroopakistan.org/register"
+                target="blank"
+                className="px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium   rounded-md transition-colors duration-200 shadow-sm hover:shadow-md"
                 onClick={() => setIsMenuOpen(false)}>
                 Register Now
               </Link>
