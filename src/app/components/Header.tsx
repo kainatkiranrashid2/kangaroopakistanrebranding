@@ -12,6 +12,7 @@ const Header = () => {
   const navigationItems = [
     { name: "Home", href: "/" },
     { name: "About Us", href: "/about" },
+    { name: "Portfolio", href: "/portfolio" },
     { name: "IKMC", href: "/ikmc" },
     { name: "IKSC", href: "/iksc" },
     { name: "IKLC", href: "/iklc" },
@@ -35,7 +36,11 @@ const Header = () => {
           className={`
           bg-white/95 backdrop-blur-sm
           transition-all duration-200 ease-out
-          ${isScrolled ? "border-b border-gray-200/60 shadow-sm" : "border-b border-transparent"}
+          ${
+            isScrolled
+              ? "border-b border-gray-200/60 shadow-sm"
+              : "border-b border-transparent"
+          }
         `}>
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="flex justify-between items-center h-16">
